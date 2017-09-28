@@ -1,0 +1,11 @@
+function peaks = peaksOfT(ecg)
+    peaks = FindFirstPeak(ecg)
+    
+	for i = 1:length(locs)
+		segment = ecg(locs(i)+(1:half));
+        [segpk, segloc] = findpeaks(segment);
+        [m,index] = max(segpk);
+        idx = locs(i) + segloc(index);
+        peaks = [peaks, idx];
+	end
+end
